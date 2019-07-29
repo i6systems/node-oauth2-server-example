@@ -23,7 +23,7 @@ app.get('/', authenticateRequest, function(req, res) {
 	res.send('Congratulations, you are in a secret area!');
 });
 
-app.listen(3000);
+app.listen(3033);
 
 function obtainToken(req, res) {
 

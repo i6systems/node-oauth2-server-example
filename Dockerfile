@@ -9,6 +9,6 @@ COPY node_modules /app/node_modules
 
 WORKDIR /app/
 
-EXPOSE 3000
+EXPOSE 3033
 
 CMD ["npm", "start"]
