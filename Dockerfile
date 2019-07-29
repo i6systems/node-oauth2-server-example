@@ -5,6 +5,7 @@ LABEL version=$CIRCLE_TAG \
       maintainer="dev-team@i6.io"
 
 COPY * /app/
+COPY node_modules /app/node_modules
 
 WORKDIR /app/
 
