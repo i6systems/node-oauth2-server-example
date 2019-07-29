@@ -1,0 +1,21 @@
+steps:
+# Install yarn with dev deps
+- id: npm-install
+  name: node:10
+  entrypoint: npm
+  args: ['install']
+
+# Build Docker image
+- id: docker-build
+  name: gcr.io/cloud-builders/docker
+  waitFor: ['npm-install']
+  args: ['build', '-t', "eu.gcr.io/$PROJECT_ID/in2plane-node-oauth2-server-example:${TAG_NAME}${BRANCH_NAME}", '.']
+
+# Push Docker image
+- id: docker-push
+  name: gcr.io/cloud-builders/docker
+  waitFor: ['docker-build']
+  args: ['push', "eu.gcr.io/$PROJECT_ID/in2plane-node-oauth2-server-example:${TAG_NAME}${BRANCH_NAME}"]
+
+images:
+- "eu.gcr.io/$PROJECT_ID/in2plane-node-oauth2-server-example:${TAG_NAME}${BRANCH_NAME}"
